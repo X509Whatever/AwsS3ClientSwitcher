@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- XXX: If false, no package will be copied to output path. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <ILRepackInternalize>true</ILRepackInternalize>
+    <IsPackable>false</IsPackable>
+    <Company>Amazon.com, Inc</Company>
+    <Product>Amazon Web Services SDK for .NET</Product>
+    <Description>The Amazon Web Services SDK for .NET (NetStandard 2.0) - Amazon Simple Storage Service.</Description>
+    <FileVersion>3.7.400.3</FileVersion>
+    <Version>3.3.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.400.3" PrivateAssets="All" />
+    <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DoNotInternalizePatterns Include="^Amazon" />
+  </ItemGroup>
+</Project>

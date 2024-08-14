@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <CopyDependenciesToOutput>true</CopyDependenciesToOutput>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Authors>Evicertia</Authors>
+    <Company>Evicertia S.L.U.</Company>
+    <Title>AwsS3ClientSwitcher</Title>
+    <Description>Switcher between AWSSDK NetFramework 4.5 and NetStandard 2.0</Description>
+    <Copyright>Copyright Evicertia, S.L. 2010-2024</Copyright>
+    <PackageProjectUrl>https://github.com/evicertia/AwsS3ClientSwitcher</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <Version>0.0.0.0</Version>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetMyPackageFiles</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony.Thin" Version="2.3.3" PrivateAssets="All" />
+    <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ILRepackMergeAssemblies Include="0Harmony.dll" />
+    <ILRepackMergeAssemblies Include="MonoMod.Core.dll" />
+    <ILRepackMergeAssemblies Include="MonoMod.Iced.dll" />
+    <ILRepackMergeAssemblies Include="Mono.Cecil.dll" />
+    <ILRepackMergeAssemblies Include="Mono.Cecil.Mdb.dll" />
+    <ILRepackMergeAssemblies Include="Mono.Cecil.Pdb.dll" />
+    <ILRepackMergeAssemblies Include="Mono.Cecil.Rocks.dll" />
+    <ILRepackMergeAssemblies Include="MonoMod.Backports.dll" />
+    <ILRepackMergeAssemblies Include="MonoMod.ILHelpers.dll" />
+    <ILRepackMergeAssemblies Include="MonoMod.Utils.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AwsS3ClientSwitcher.NetFx\AwsS3ClientSwitcher.NetFx.csproj" PrivateAssets="All">
+      <Aliases>AWSSDK_NETFX</Aliases>
+    </ProjectReference>
+    <ProjectReference Include="..\AwsS3ClientSwitcher.NetStandard\AwsS3ClientSwitcher.NetStandard.csproj" PrivateAssets="All">
+      <Aliases>AWSSDK_NETSTD</Aliases>
+    </ProjectReference>
+  </ItemGroup>
+
+  <!-- https://learn.microsoft.com/en-us/nuget/reference/msbuild-targets#pack-target -->
+  <Target Name="GetMyPackageFiles">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutputPath)$(AssemblyName).*.dll">
+      </BuildOutputInPackage>
+    </ItemGroup>
+  </Target>
+</Project>
