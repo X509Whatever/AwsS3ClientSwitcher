@@ -1,0 +1,33 @@
+version: '3.7.400.{build}'
+skip_tags: true
+image: Visual Studio 2022
+configuration: Release
+dotnet_csproj:
+  patch: true
+  file: '**\AwsS3ClientSwitcher.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+before_build:
+  - nuget restore
+build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  use_snupkg_format: true
+  verbosity: normal
+deploy:
+- provider: NuGet
+  name: production
+  api_key:
+    secure: /DqBIYJxxnotriPZ09102VrlDif5jaYu0afRyYRn33quMY2yzAKzX6nmcOaL5Mdx
+  on:
+    branch: master
+notifications:
+  - provider: Email
+    to:
+      - '{{commitAuthorEmail}}'
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true
