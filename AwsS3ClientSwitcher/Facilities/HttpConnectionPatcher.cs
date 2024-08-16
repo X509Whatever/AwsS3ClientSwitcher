@@ -60,13 +60,13 @@ namespace System.Net.Http
 
 				// https://github.com/luigiberrettini/xplat-socket-options/blob/master/TestSuite.cs#L38
 				if (tcpKeepAlive.Timeout != null)
-					____socket.SetSocketOption(SocketOptionLevel.Tcp, (SocketOptionName)0x4, tcpKeepAlive.Timeout.Value);
+					____socket.SetSockOptSysCall(SocketOptionLevel.Tcp, (SocketOptionName)0x4, (int)tcpKeepAlive.Timeout.Value.TotalMilliseconds);
 
 				if (tcpKeepAlive.Interval != null)
-					____socket.SetSocketOption(SocketOptionLevel.Tcp, (SocketOptionName)0x5, tcpKeepAlive.Interval.Value);
+					____socket.SetSockOptSysCall(SocketOptionLevel.Tcp, (SocketOptionName)0x5, (int)tcpKeepAlive.Interval.Value.TotalMilliseconds);
 
 				if (tcpKeepAlive.Probes != null)
-					____socket.SetSocketOption(SocketOptionLevel.Tcp, (SocketOptionName)0x6, tcpKeepAlive.Probes.Value);
+					____socket.SetSockOptSysCall(SocketOptionLevel.Tcp, (SocketOptionName)0x6, tcpKeepAlive.Probes.Value);
 			}
 		}
 	}

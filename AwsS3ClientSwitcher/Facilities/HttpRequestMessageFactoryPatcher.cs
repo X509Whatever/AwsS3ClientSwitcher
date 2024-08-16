@@ -12,7 +12,7 @@ namespace Amazon.Runtime
 {
 	public static class HttpRequestMessageFactoryPatcher
 	{
-		private static readonly FieldInfo _httpClientHandlerAccessor = typeof(HttpClient).GetField("handler", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+		private static readonly FieldInfo _httpClientHandlerAccessor = typeof(HttpMessageInvoker).GetField("_handler", BindingFlags.NonPublic | BindingFlags.Instance);
 
 		internal const string TCP_KEEP_ALIVE_KEY = "CUSTOM::" + nameof(TcpKeepAlive);
 

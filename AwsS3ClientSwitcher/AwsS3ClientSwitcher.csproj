@@ -20,25 +20,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony.Thin" Version="2.3.3" PrivateAssets="All" />
     <PackageReference Include="ILRepack.Lib.MSBuild" Version="2.1.18" PrivateAssets="All" />
+    <PackageReference Include="Lib.Harmony" Version="2.2.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ILRepackMergeAssemblies Include="0Harmony.dll" />
-    <ILRepackMergeAssemblies Include="MonoMod.Core.dll" />
-    <ILRepackMergeAssemblies Include="MonoMod.Iced.dll" />
-    <ILRepackMergeAssemblies Include="Mono.Cecil.dll" />
-    <ILRepackMergeAssemblies Include="Mono.Cecil.Mdb.dll" />
-    <ILRepackMergeAssemblies Include="Mono.Cecil.Pdb.dll" />
-    <ILRepackMergeAssemblies Include="Mono.Cecil.Rocks.dll" />
-    <ILRepackMergeAssemblies Include="MonoMod.Backports.dll" />
-    <ILRepackMergeAssemblies Include="MonoMod.ILHelpers.dll" />
-    <ILRepackMergeAssemblies Include="MonoMod.Utils.dll" />
   </ItemGroup>
 
   <ItemGroup>
