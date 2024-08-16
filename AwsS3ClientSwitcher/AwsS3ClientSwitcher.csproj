@@ -5,6 +5,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <CopyDependenciesToOutput>true</CopyDependenciesToOutput>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ILRepackInternalize>true</ILRepackInternalize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Authors>Evicertia</Authors>
     <Company>Evicertia S.L.U.</Company>
